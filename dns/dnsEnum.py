@@ -19,5 +19,3 @@ def dnsEnum(domain):
             print("MX Record: ", mx.to_text())
     except Exception as e:
         print(f"Unable to Resolve DNS Information: {e}")
-
-dnsEnum("www.github.com")

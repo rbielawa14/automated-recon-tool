@@ -10,6 +10,9 @@ def main():
     print("WHOIS DATA:")
     print("-------------------------------")
     getWHOISdata(target)
+    print("DNS ENUMERATION:") 
+    print("-------------------------------")
+    dnsEnum(target)
 
 if __name__ == "__main__":
     main()

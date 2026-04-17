@@ -17,5 +17,3 @@ def getWHOISdata(domain):
     except Exception as e:
         print(f"Error retrieving WHOIS data: {e}")
         return None 
-
-getWHOISdata("cityinthe.cloud")
