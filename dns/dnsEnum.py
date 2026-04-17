@@ -1,15 +1,23 @@
 import dns.resolver
 
 def dnsEnum(domain):
+    print(f"Getting DNS Information for {domain}")
     try:
-        print(f"Getting DNS Information for {domain}")
         for a in dns.resolver.resolve(domain, 'A'): 
             print("A Record: ", a.to_text())
-        for ns in dns.resolver.resole(domain, 'NS'):
-            print("NS Record: ", ns.to_text())
-        for MX in dns.resolver.resole(domain, 'MX'):
+    except Exception as e:
+        print(f"Unable to Resolve DNS Information: {e}")
+
+    try:
+        for ns in dns.resolver.resolve(domain, 'NS'):
             print("NS Record: ", ns.to_text())
     except Exception as e:
         print(f"Unable to Resolve DNS Information: {e}")
 
-dnsEnum("www.google.com")
+    try:
+        for mx in dns.resolver.resolve(domain, 'MX'):
+            print("MX Record: ", mx.to_text())
+    except Exception as e:
+        print(f"Unable to Resolve DNS Information: {e}")
+
+dnsEnum("www.github.com")
