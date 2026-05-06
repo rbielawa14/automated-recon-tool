@@ -7,8 +7,6 @@ def getWHOISdata(domain):
         target = whois.whois(domain)
         #print(target)
         # Access specific data
-        print("WHOIS DATA")
-        print("------------------------------")
         print("Name: ", "{}".format(target.name if target.name else "None Found."))
         print("Registrar: ", "{}".format(target.registrar if target.registrar else "None Found."))
         print("Creation Date: ", "{}".format(target.creation_date if target.creation_date else "None Found."))

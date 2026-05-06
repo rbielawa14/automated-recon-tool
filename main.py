@@ -1,18 +1,31 @@
-import argparse
 
-def main():
-    parser = argparse.ArgumentParser(description="Welcome to ART - An automated, streamlined, recon tool")
-    parser.add_argument("--domain", help="Enter the domain to parse.", required=True)
-    args = parser.parse_args()
-    target = args.domain
+from httpheader.httpanalysis import get_http_headers
+from portscan.portscan import scan_ports
+from whoislk.whoislookup import getWHOISdata
+from dnsenm.dnsEnum import dnsEnum
 
-    print(f"Running ART On: {target}")
+def main(domain):
+    print(f"Running ART On: {domain}")
     print("WHOIS DATA:")
     print("-------------------------------")
-    getWHOISdata(target)
+    getWHOISdata(domain)
+    print("-------------------------------")
+
     print("DNS ENUMERATION:") 
     print("-------------------------------")
-    dnsEnum(target)
+    dnsEnum(domain)
+    print("-------------------------------")
+
+    print("HTTP ANALYSIS:") 
+    print("-------------------------------")
+    get_http_headers("https://" + domain)
+    print("-------------------------------")
+
+    print("PORT SCANNING:") 
+    print("-------------------------------")
+    scan_ports(domain)
+    print("-------------------------------")
 
 if __name__ == "__main__":
-    main()
+    target = input("Enter the domain: ")
+    main(target)
